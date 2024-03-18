@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Random Number</title>
+  </head>
+  <body>
+    <button onclick="addOutcome()" class="btn">Run</button>
+    <div class="screen"></div>
+    <script>
+      let outcome;
+      function getRandomNumber(a, b) {
+        outcome = Math.round((Math.random() * (2-1) + 1)*100) / 100;
+        return outcome;
+      }
+
+      const btnElement = document.querySelector('.btn');
+
+      btnElement.addEventListener('click', () => {
+        //console.log('clicked');
+        console.log(getRandomNumber());
+      });
+
+      let outcomeArray = [];
+
+      renderOutput();
+
+      function renderOutput() {
+        let arrHtml = '';
+        for(let i = 0; i < outcomeArray.length; i++) {
+          const arr = outcomeArray[i];
+  
+          const html = `<p>${arr}</p>`
+          arrHtml += html;
+        }
+  
+        const output = document.querySelector('.screen');
+        output.innerHTML = arrHtml;
+      }
+
+      
+      function addOutcome() {
+        outcomeArray.push(outcome);
+        console.log(outcomeArray)
+
+        renderOutput();
+      }
+
+      console.log(getRandomNumber());
+    </script>
+  </body>
+</html>
